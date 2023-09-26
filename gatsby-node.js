@@ -16,7 +16,7 @@ exports.createPages = async ({ actions, graphql }) => {
   result.data?.allDatoCmsPost?.edges?.forEach(({ node: page }, index) => {
     createPage({
       path: `/posts/${page?.slug}`,
-      component: require.resolve('./src/pages/posts/post-template.js'),
+      component: require.resolve('./src/templates/post-template.js'),
       context: {
         id: page?.id
       },
