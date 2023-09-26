@@ -1,17 +1,15 @@
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
-  const result = await graphql(`
-    {
-      allDatoCmsPost(sort: { order: DESC, fields: date }) {
-        edges {
-          node {
-            id
-            slug
-          }
-        }
+  const result = await graphql(`{
+  allDatoCmsPost(sort: {date: DESC}) {
+    edges {
+      node {
+        id
+        slug
       }
     }
-  `);
+  }
+}`);
 
   result.data?.allDatoCmsPost?.edges?.forEach(({ node: page }, index) => {
     createPage({
